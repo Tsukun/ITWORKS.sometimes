@@ -8,7 +8,32 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Hello, world!</title>
-  <script src="script.js"></script><!--­под­клю­чить­биб­лио­те­ку­Ja­va­Script­--> 
+  <script src="script.js"></script><!--­под­клю­чить­биб­лио­те­ку­Ja­va­Script­-->
+
+    <style>
+      .spinning-square {
+    width: 60px;
+    height: 60px;
+    background-color: #333;
+
+    margin: 0 auto;
+    -webkit-animation: rotatesquare 2.2s infinite ease-in-out;
+    animation: rotatesquare 2.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotatesquare {
+    0% { -webkit-transform: perspective(120px) }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotatesquare {
+  0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+  50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+  100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); }
+}
+    </style>
+
   </head>
 
   <body>
@@ -16,12 +41,12 @@
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
       <h5 class="my-0 mr-md-auto font-weight-normal">Ит воркс</h5>
     <nav class="my-2 my-md-0 mr-md-3">
-         <!--Log In Button--> 
-        <button id="first" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter2">
+         <!--Log In Button-->
+        <button id="first" type="button" disabled="disabled" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter2">
           Войти
         </button>
-         <!--Reg Button Button--> 
-        <button id="first" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+         <!--Reg Button Button-->
+        <button id="first" type="button" disabled="disabled" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter1">
           Регистрация
         </button>
     </nav>
@@ -108,14 +133,8 @@
       </div>
 
 <div class="content">
-  <div class="load">
-    <!--    <a href="#" class="knopka">кнопка</a>-->
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload></p>
-    </form>
-  </div>
-  <!--    <div class="info">Информация бла бла</div>-->
+<div class="spinning-square"></div>
+</div>
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

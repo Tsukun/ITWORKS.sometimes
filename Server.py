@@ -18,17 +18,7 @@ def allowed_file(filename):
 
 @app.route('/uploaded')
 def uploaded():
-    return '''
-                <!doctype html>
-                <hrml>
-                <head> 
-                    <title>Spectrogram</title>
-                </head>
-                <body>
-                    
-                </body>
-                </html>
-                '''
+    return render_template('load.html')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -46,4 +36,4 @@ def render():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run()

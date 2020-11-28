@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 100px;
-    color: black;
+    background-color: black;
 }
 
 .load {
@@ -23,7 +23,6 @@
     width: 300px;
     height: 100px;
     border-width: 1px;
-    /*border-style: solid;*/
     border-color: #007a6d;
     background-color: white;
 }
@@ -33,25 +32,31 @@
 	text-align: center;
     line-height: 70px;
     margin-left: 12px;
-    margin-top: 20px;
+    margin-top: 50px;
     width: 550px;
     height: 150px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #007a6d;
     background-color: white;
-
 }
 
-a.knopka {
-  color: #fff; /* цвет текста */
-  text-decoration: none; /* убирать подчёркивание у ссылок */
-  user-select: none; /* убирать выделение текста */
-  background: rgb(212,75,56); /* фон кнопки */
-  padding: .7em 1.5em; /* отступ от текста */
-  outline: none; /* убирать контур в Mozilla */
-  width: 300px;
-  height: 100px;
-} 
-a.knopka:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
-a.knopka:active { background: rgb(152,15,0); } /* при нажатии */
+
+.spinning-square {
+    width: 60px;
+    height: 60px;
+    background-color: #333;
+
+    margin: 0 auto;
+    -webkit-animation: rotatesquare 2.2s infinite ease-in-out;
+    animation: rotatesquare 2.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotatesquare {
+    0% { -webkit-transform: perspective(120px) }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotatesquare {
+  0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+  50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+  100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); }
+}
