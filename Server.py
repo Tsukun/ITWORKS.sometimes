@@ -1,5 +1,10 @@
-import requests
-url = "https://httpbin.org/"
-response = requests.get("https://httpbin.org/get")
-if(response.status_code == 200):
-    print(response.text)
+from flask import Flask
+from flask import render_template
+app = Flask(__name__)
+
+@app.route('/index')
+def hello_world():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run()
