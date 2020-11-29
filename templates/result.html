@@ -52,8 +52,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate">
 
-
-              <p class="mb-4"><h2 class="subheading" style="font-size: 28px;">Status:</h2><h3 style="color: white; font-size: 18px;">{{status}}</h3></p>
+              <p class="mb-4"><h2 class="subheading" style="font-size: 28px;">Status:</h2>{% if status == "Copyright song" %}<h3 style="color: red; font-size: 18px;">{{status}}</h3>{% else %} <h3 style="color: green; font-size: 18px;">{{status}}</h3>{% endif %}</p>
             <p id="result1" class="mb-4"><h1 class="subheading" style="font-size: 28px;">Song:</h1><h3 style="color: white; font-size: 18px;">{{song}}</h3></p>
             <p class="mb-4"><h2 class="subheading" style="font-size: 28px;">Label:</h2><h3 style="color: white; font-size: 18px;">{{label}}</h3></p>
 

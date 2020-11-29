@@ -6,6 +6,7 @@ from itertools import zip_longest
 
 db = SqliteDatabase()
 
+
 def grouper(iterable, n, fillvalue=None):
     args = [iter(iterable)] * n
     return (filter(None, values) for values
