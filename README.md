@@ -21,16 +21,19 @@ git clone https://github.com/Tsukun/ITWORKS.sometimes.git
   
   matplotlib
   
+## Running
 Run reset-db.py to reset database of music
 
 Run collect-fingerprints-by-dir to save music in your database
 
-### If error:
+Run Server.py
+
+#### If error:
 > RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
 > RuntimeWarning: Couldn't find ffprobe or avprobe - defaulting to ffprobe, but may not work
-### Do:
+#### Do:
 open a powershell in administration mode
 choco install -y ffmpeg
 
-Run Server.py
+
   
