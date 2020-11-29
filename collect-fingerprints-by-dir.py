@@ -29,17 +29,18 @@ if __name__ == '__main__':
                     continue
 
             print("new song, analyze...")
+            print(readonly_filename)
 
             hashes = set()
             channel_amount = len(audio['channels'])
 
             for channel_n, channel in enumerate(audio['channels']):
-                print(f"fingerprinting channel {channel_n + 1} {channel_amount}")
+                print(f"fingerprinting channel {channel_n + 1} of {channel_amount}")
 
                 channel_hashes = fingerprint.fingerprint(channel, Fs=audio['Fs'])
                 channel_hashes = set(channel_hashes)
 
-                print(f"fingerprinting channel {channel_n + 1} {channel_amount}, got {len(channel_hashes)} hashes")
+                print(f"fingerprinting channel {channel_n + 1} of {channel_amount}, got {len(channel_hashes)} hashes")
 
                 hashes |= channel_hashes
 
@@ -47,7 +48,7 @@ if __name__ == '__main__':
             for hash, offset in hashes:
                 values.append((song_id, hash, offset))
 
-            print(f"storing {len(values)} hashes in db'")
+            print(f"storing {len(values)} hashes in db")
 
             print(values)
             db.store_fingerprints(values)
