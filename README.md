@@ -22,6 +22,9 @@ git clone https://github.com/Tsukun/ITWORKS.sometimes.git
   matplotlib
   
 ## Running
+
+Load your music in music/ directory
+
 Run reset-db.py to reset database of music
 
 Run collect-fingerprints-by-dir to save music in your database
