@@ -16,7 +16,7 @@ class SqliteDatabase(Database):
         sqlite3.register_adapter(np.int32, lambda val: int(val))
 
     def connect(self):
-        self.conn = sqlite3.connect("db/fingerprints.db")
+        self.conn = sqlite3.connect("db/fingerprints.db", check_same_thread=False)
         self.conn.text_factory = str
         self.cur = self.conn.cursor()
 

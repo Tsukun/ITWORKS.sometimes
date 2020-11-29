@@ -47,6 +47,7 @@ def fingerprint(channel_samples, Fs=DEFAULT_FS,
         window=mlab.window_hanning,
         noverlap=int(wsize * wratio))[0]
 
+
     if plots:
         plt.plot(arr2D)
         plt.title('FFT')
@@ -71,7 +72,6 @@ def get_2D_peaks(arr2D, plot=False, amp_min=DEFAULT_AMP_MIN):
                                        border_value=1)
 
     detected_peaks = local_max ^ eroded_background
-
 
     amps = arr2D[detected_peaks]
     j, i = np.where(detected_peaks)
@@ -104,7 +104,7 @@ def generate_hashes(peaks, fan_value=DEFAULT_FAN_VALUE):
     if PEAK_SORT:
         peaks.sort(key=itemgetter(1))
 
-    for i in range(len(peaks)):
+    for i in range(0,len(peaks)):
         for j in range(1, fan_value):
             if (i + j) < len(peaks):
 

@@ -12,7 +12,8 @@ if __name__ == "__main__":
       id  INTEGER PRIMARY KEY AUTOINCREMENT,
       name  TEXT,
       filehash  TEXT,
-      copyright TEXT
+      copyright TEXT,
+      label TEXT
     );
   """)
     print('created db.songs')

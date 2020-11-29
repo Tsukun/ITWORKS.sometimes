@@ -4,6 +4,7 @@ from libs.reader_file import FileReader
 from libs.db_sqlite import SqliteDatabase
 from itertools import zip_longest
 
+db = SqliteDatabase()
 
 def grouper(iterable, n, fillvalue=None):
     args = [iter(iterable)] * n
@@ -43,8 +44,7 @@ def return_matches(hashes):
     values = mapper.keys()
     count = 0
 
-
-    for split_values in grouper(values, 50):
+    for split_values in grouper(values, 20):
         query = """
             SELECT upper(hash), song_fk, offset
             FROM fingerprints
@@ -57,7 +57,6 @@ def return_matches(hashes):
         x = db.executeAll(query, split_values)
 
         matches_found = len(x)
-
 
         if matches_found > 0:
             msg = 'found hash matches'
@@ -77,20 +76,13 @@ def find_matches(samples, fs=fingerprint.DEFAULT_FS):
     return return_matches(hashes)
 
 
-if __name__ == "__main__":
-    db = SqliteDatabase()
+def check_song(filename):
+    r = FileReader("./uploads/" + filename)
+    audio = r.parse_audio(1)
 
-    r = FileReader("testtest.mp3")
-    audio = r.parse_audio()
-
-    Fs = audio['Fs']
-    channel_amount = len(audio['channels'])
-
-    result = set()
     matches = []
-    msg = None
 
-    for channeln, channel in enumerate(audio['channels']):
+    for x, channel in enumerate(audio['channels']):
         matches.extend(find_matches(channel))
 
     total_matches_found = len(matches)
@@ -98,7 +90,11 @@ if __name__ == "__main__":
     if total_matches_found > 0:
         print("Success")
         song = align_matches(matches)
-        print(song[1])
+        if song[3] == "Yes":
+            msg = f"Copyright song"
+        else:
+            msg = "Don't find information about copyright"
+        return song[1][:-4], msg, song[4]
+
     else:
         print("Cant find song")
-

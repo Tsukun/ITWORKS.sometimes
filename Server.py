@@ -1,9 +1,10 @@
 import os
 from flask import Flask, request, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
+import recognize
 
 
-UPLOAD_FOLDER = '/home/averoma/ITWORKS.sometimes/uploads'
+UPLOAD_FOLDER = "./uploads"
 ALLOWED_EXTENSIONS = set(['mp3'])
 
 
@@ -28,7 +29,10 @@ def render():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
+            name, message, label = recognize.check_song(filename)
+            print(name)
+            print(message)
+            print(label)
         return redirect(url_for('uploaded'))
 
     if request.method == 'GET':
