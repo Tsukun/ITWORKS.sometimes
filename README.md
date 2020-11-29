@@ -2,20 +2,27 @@
 
 # How To Install
 
-In cmd:
-  git clone https://github.com/Tsukun/ITWORKS.sometimes/tree/main
+git clone https://github.com/Tsukun/ITWORKS.sometimes.git
  
 ## Install Dependecies:
   cython
+  
   numpy>=1
+  
   numpy
+  
   pydub
+  
   scipy
+  
   werkzeug
+  
   flask
+  
   matplotlib
   
 Run reset-db.py to reset database of music
+
 Run collect-fingerprints-by-dir to save music in your database
 
 ### If error:
